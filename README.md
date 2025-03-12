@@ -38,7 +38,7 @@ Este projeto permite a análise de dados de campanhas de telemarketing, fornecen
 - Para rodar localmente:
 
   ```bash
-  streamlit run app.py
+  streamlit run m19-app2.py
   ```
 
 - Para executar no Render, basta acessar o link gerado após o deploy.
