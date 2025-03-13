@@ -22,8 +22,12 @@ st.set_page_config(page_title='Telemarketing analisys',
                    initial_sidebar_state='expanded')
 
 def main():
-    st.title('# Telemarketing analisys')
+    st.title('# Telemarketing analysis')
     st.markdown("---")
+
+    # Apresenta uma imagem
+    image = Image.open('Bank-Branding.jpg')
+    st.sidebar.image(image)
 
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
@@ -61,10 +65,6 @@ def to_excel(df):
     writer.save()
     processed_data = output.getvalue()
     return processed_data
- 
-  # APRESENTA UMA IMAGEM
-  image = Image.open('Bank-Branding.jpg')
-  st.sidebar.image(image)
  
   # BOTÃO PARA CARREGAR UM ARQUIVO NO APP
   st. sidebar.write("## Upload file")
