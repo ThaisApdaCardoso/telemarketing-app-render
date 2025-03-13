@@ -20,18 +20,18 @@ custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
  
 # FUNÇÃO PARA LEITURA DOS DADOS - @ST.CACHE
-@st.cache(show_spinner = True, allow_output_mutation = True)
+@st.cache_data(show_spinner = True, allow_output_mutation = True)
 def load_data(file_data):
   try:
       return pd.read_csv(file_data, sep = ';')
   except:
-      return pd.read_excel(file_data, sep = ',')
+      return pd.read_excel(file_data)
  
 bank_raw = load_data('bank-additional-full.csv')
 bank = bank_raw.copy()
  
 # FUNÇÃO PARA FILTROS COM OPÇÃO "ALL"
-@st.cache(allow_output_mutation = True)
+@st.cache_data(allow_output_mutation = True)
 def multiselect_filter(relatorio, col, selecionados):
   if 'all' in selecionados:
     return relatorio
@@ -39,12 +39,12 @@ def multiselect_filter(relatorio, col, selecionados):
     return relatorio[relatorio[col].isin(selecionados)].reset_index(drop=True)
 
 # FUNÇÃO PARA CONVERTER DF PARA CSV
-@st.cache
+@st.cache_data
 def df_toString(df):
     return df.to_csv(index=False).encode('utf-8')
 
 # FUNÇÃO PARA CONVERTER DF PARA EXCEL
-@st.cache
+@st.cache_data
 def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
