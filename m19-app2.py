@@ -15,6 +15,15 @@ from io import BytesIO
 import streamlit as st
 from os import pipe
 
+# A configuração da página deve ser a primeira coisa no código
+st.set_page_config(page_title='Telemarketing analisys',
+                   page_icon='telmarketing_icon.png',
+                   layout='wide',
+                   initial_sidebar_state='expanded')
+
+def main():
+    st.title('# Telemarketing analisys')
+    st.markdown("---")
 
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
@@ -52,18 +61,6 @@ def to_excel(df):
     writer.save()
     processed_data = output.getvalue()
     return processed_data
- 
-# FUNÇÃO PRINCIPAL DO APP
-def main():
-  st.set_page_config(page_title = 'Telemarketing analisys',
-      page_icon = 'telmarketing_icon.png',
-      layout = 'wide',
-      initial_sidebar_state = 'expanded'
-  )
-
-  # TÍTULO PRINCIPAL DO APP
-  st.title('# Telemarketing analisys')
-  st.markdown("---")
  
   # APRESENTA UMA IMAGEM
   image = Image.open('Bank-Branding.jpg')
