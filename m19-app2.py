@@ -124,10 +124,12 @@ def main():
         fig, ax = plt.subplots(1, 2, figsize=(5, 3))
 
         bank_raw_target_perc = bank_raw.y.value_counts(normalize=True).to_frame() * 100
+        bank_raw_target_perc.columns = ['Percentage']  # Renomeia a coluna para 'Percentage'
         bank_raw_target_perc = bank_raw_target_perc.sort_index()
 
         try:
             bank_target_perc = bank.y.value_counts(normalize=True).to_frame() * 100
+            bank_target_perc.columns = ['Percentage']  # Renomeia a coluna para 'Percentage'
             bank_target_perc = bank_target_perc.sort_index()
         except:
             st.error('Filter error!')
